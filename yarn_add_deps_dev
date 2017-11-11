@@ -1,0 +1,24 @@
+yarn add --dev \
+    babel-core \
+    babel-loader \
+    babel-preset-es2015 \
+    babel-preset-es2017 \
+    babel-preset-react \
+    babel-preset-stage-0 \
+    clean-webpack-plugin \
+    babel-eslint \
+    html-webpack-plugin \
+    css-loader \
+    node-sass \
+    sass-loader \
+    file-loader \
+    style-loader \
+    url-loader \
+    webpack-dev-server \
+    webpack-merge \
+    eslint \
+    eslint-config-airbnb \
+    eslint-loader \
+    eslint-plugin-jsx-a11y \
+    eslint-plugin-react \
+    eslint-plugin-import \
