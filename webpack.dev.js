@@ -18,7 +18,7 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('dev'),
-        'ADMIN_URL': JSON.stringify('https://dev-api.moneytable.com'),
+        'SIGN_IN_URL': JSON.stringify('http://0.0.0.0:3000/api'),
       },
     }),
   ],

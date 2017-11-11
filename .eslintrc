@@ -36,6 +36,8 @@
     "globals": {
         "window": true,
         "document": true,
-        "$": true
+        "$": true,
+        "localStorage": true,
+        "FormData": true
     }
 }
