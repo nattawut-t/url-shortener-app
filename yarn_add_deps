@@ -4,6 +4,7 @@ yarn add \
     react-dom \
     react-router-dom \
     react-redux \
+    react-router \
     prop-types \
     redux \
     redux-form \
