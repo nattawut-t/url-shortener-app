@@ -1,12 +1,96 @@
-// import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import React from 'react'
+import { Field, reduxForm } from 'redux-form'
+import {
+  Row,
+  Col,
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  FormGroup,
+  Label,
+  Input,
+} from 'reactstrap'
+import { Icon } from 'react-fa'
 
-const Index = () => 'Index Component'
+const Index = ({ longUrl, shortUrl, shorten, shortening, cancel }) =>
+  <div className="animated fadeIn">
+    <form onSubmit={shorten}>
+      <Card>
+        <CardHeader>
+          <strong>URL Shortener</strong>
+          <small> enter a long URL to be shorten</small>
+        </CardHeader>
+        <CardBody>
+          <Row>
+            <Col xs="12">
+              <FormGroup>
+                <Label htmlFor="longUrl">Long URL</Label>
+                <Field
+                  name="longUrl"
+                  component={({ input }) =>
+                    <div>
+                      <Input
+                        {...input}
+                        type="text"
+                        id="longUrl"
+                        placeholder="Long URL"
+                      />
+                    </div>
+                  }
+                  type="text"
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <div className="form-actions" style={{ textAlign: 'right' }}>
 
-Index.propTypes = {
-}
+            {shortening ?
+              <Button
+                className="px-4"
+                onClick={cancel}
+              >
+                Cancel
+              </Button> : ''
+            }
+            &nbsp;&nbsp;
+            <Button
+              color="primary"
+              className="px-4"
+              disabled={!longUrl || shortening}
+            >
+              <Icon spin name={shortening ? 'circle-o-notch' : ''} size="lg" />&nbsp;&nbsp;Shorten URL
+            </Button>
 
-Index.defaultProps = {
-}
+          </div>
+        </CardBody>
+      </Card>
+    </form>
 
-export default Index
+    <Card>
+      <CardHeader>
+        <strong>Short URL</strong>
+        <small> enter your site with the generated-shorter URL</small>
+      </CardHeader>
+      <CardBody>
+
+        <Col xs="12">
+          <FormGroup>
+            <Input
+              name="shortUrl"
+              type="text"
+              id="shortUrl"
+              placeholder="Short URL"
+              value={shortUrl}
+              readOnly
+            />
+          </FormGroup>
+        </Col>
+
+      </CardBody>
+    </Card>
+  </div >
+
+export default reduxForm({
+  form: 'urlShortener',
+})(Index)
