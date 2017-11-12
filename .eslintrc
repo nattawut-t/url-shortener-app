@@ -38,6 +38,7 @@
         "document": true,
         "$": true,
         "localStorage": true,
+        "sessionStorage": true,
         "FormData": true
     }
 }
