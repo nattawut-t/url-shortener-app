@@ -25,7 +25,7 @@ const Layout = props =>
         <Container fluid>
           <Switch>
             <Route path="/dashboard" name="Dashboard" component={Index} />
-            <Route path="/url" name="NewLoan" component={Index} />
+            <Route path="/url" name="Shorten" component={Index} />
           </Switch>
         </Container>
       </main>

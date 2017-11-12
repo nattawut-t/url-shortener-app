@@ -87,7 +87,7 @@ const Index = ({ longUrl, shortUrl, shortenUrl, shortening, cancel }) =>
               type="text"
               id="shortUrl"
               placeholder="Short URL"
-              value={shortUrl ? `${window.location.origin}/${shortUrl}` : ''}
+              value={shortUrl ? `${window.location.origin}/#/${shortUrl}` : ''}
               readOnly
             />
           </FormGroup>
