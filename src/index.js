@@ -11,6 +11,7 @@ import '../scss/core/_dropdown-menu-right.scss'
 import store from './redux/store'
 import NotFound from './components/errors/NotFound'
 import InternalServerError from './components/errors/InternalServerError'
+import Url from './containers/Url'
 import Login from './containers/Login'
 import Layout from './containers/Layout'
 
@@ -20,6 +21,7 @@ const Root = () =>
       <Switch>
         <Route exact path="/login" name="Login" component={Login} />
         <Route exact path="/dashboard" name="Layout" component={Layout} />
+        <Route path="/:key" name="Recovery" component={Url} />
         <Route exact path="/404" name="NotFound" component={NotFound} />
         <Route exact path="/500" name="InternalServerError" component={InternalServerError} />
         <Redirect from="/" to="/login" />
