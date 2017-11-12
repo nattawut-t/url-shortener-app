@@ -8,7 +8,7 @@ const mapStateToProps = ({ authen }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  signIn: (username, password) => dispatch(signIn(username, password)),
+  signIn: (username, password, callback) => dispatch(signIn(username, password, callback)),
   cancel: () => dispatch(signInCancelled()),
 })
 
