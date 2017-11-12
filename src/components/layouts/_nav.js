@@ -14,7 +14,7 @@ export default {
     },
     {
       name: 'URL Shortener',
-      url: '/loans/new',
+      url: '/url',
       icon: 'icon-puzzle',
     },
   ],
