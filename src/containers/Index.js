@@ -2,13 +2,11 @@ import { connect } from 'react-redux'
 import Component from '../components/Index'
 import { shortenUrl, shortenUrlCancelled } from '../redux/modules/urlShortener'
 
-const mapStateToProps = ({ form: { urlShortenerForm }, urlShortener }) => (
-  // console.log('form: ', urlShortenerForm)
-  {
-    longUrl: (urlShortenerForm && urlShortenerForm.values && urlShortenerForm.values.longUrl) || '',
-    shortUrl: urlShortener.shortUrl,
-    shortening: urlShortener.shortening,
-  })
+const mapStateToProps = ({ form: { urlShortenerForm }, urlShortener }) => ({
+  longUrl: (urlShortenerForm && urlShortenerForm.values && urlShortenerForm.values.longUrl) || '',
+  shortUrl: urlShortener.shortUrl,
+  shortening: urlShortener.shortening,
+})
 
 const mapDispatchToProps = dispatch => ({
   shortenUrl: url => dispatch(shortenUrl(url)),
