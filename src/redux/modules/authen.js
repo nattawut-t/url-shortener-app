@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/takeUntil'
 
-import { url } from '../../configs/api'
+import { authenUrl } from '../../configs/api'
 
 // const { Observable } = Rx
 const SIGN_IN = 'SIGN_IN'
@@ -43,7 +43,7 @@ export const signInEpic = action$ =>
       //   .forEach(key => formData.append(key, data[key]))
 
       return ajax({
-        url: url('/authen'),
+        url: authenUrl('/authen'),
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,13 +56,14 @@ export const signInEpic = action$ =>
       })
         .delay(1000)
         .map(({ response }) => signInFulfilled(response, action.callback))
+        .do(({ callback }) => callback())
         .takeUntil(action$.ofType(SIGN_IN_CANCELLED))
       // .startWith(loading(true))
     })
-    .subscribe(({ callback }) => {
-      console.log('token: ', localStorage.getItem('token'))
-      callback()
-    })
+// .subscribe(({ callback }) => {
+//   console.log('token: ', localStorage.getItem('token'))
+//   callback()
+// })
 
 const authen = (state = {}, action) => {
   switch (action.type) {
@@ -73,7 +74,7 @@ const authen = (state = {}, action) => {
       }
 
     case SIGN_IN_FULFILLED:
-      localStorage.setItem('token', action.data.token)
+      sessionStorage.setItem('token', action.data.token)
       console.log('SIGN_IN_FULFILLED: ', action)
       return {
         ...state,
