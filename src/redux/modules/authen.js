@@ -1,30 +1,39 @@
+// import Rx from 'rxjs'
 import { ajax } from 'rxjs/observable/dom/ajax'
-import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/delay'
 import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/takeUntil'
 
 import { url } from '../../configs/api'
 
+// const { Observable } = Rx
 const SIGN_IN = 'SIGN_IN'
 const SIGN_IN_FULFILLED = 'SIGN_IN_FULFILLED'
 const SIGN_IN_CANCELLED = 'SIGN_IN_CANCELLED'
 
 // action creators
-export const signIn = (username, password) => ({
+export const signIn = (username, password, callback) => ({
   type: SIGN_IN,
   payload: {
     username,
     password,
   },
+  callback,
 })
-export const signInFulfilled = data => ({ type: SIGN_IN_FULFILLED, data })
+export const signInFulfilled = (data, callback) => ({ type: SIGN_IN_FULFILLED, data, callback })
 export const signInCancelled = () => ({ type: SIGN_IN_CANCELLED })
 
 // epic
+// export const signInEpic = () =>
+//   Observable.of(1, 2, 3)
+//     .flatMap(value => Observable.of(value + 1))
+//     .subscribe(value => console.log(value))
+
 export const signInEpic = action$ =>
   action$.ofType(SIGN_IN)
-    .switchMap(action => {
+    .mergeMap(action => {
       console.log(action.type)
       // const formData = new FormData()
       // const data = action.payload
@@ -46,9 +55,13 @@ export const signInEpic = action$ =>
         withCredentials: false,
       })
         .delay(1000)
-        .map(({ response }) => signInFulfilled(response))
+        .map(({ response }) => signInFulfilled(response, action.callback))
         .takeUntil(action$.ofType(SIGN_IN_CANCELLED))
       // .startWith(loading(true))
+    })
+    .subscribe(({ callback }) => {
+      console.log('token: ', localStorage.getItem('token'))
+      callback()
     })
 
 const authen = (state = {}, action) => {
@@ -61,13 +74,10 @@ const authen = (state = {}, action) => {
 
     case SIGN_IN_FULFILLED:
       localStorage.setItem('token', action.data.token)
-      // console.log('token: ', localStorage.getItem('token'))
+      console.log('SIGN_IN_FULFILLED: ', action)
       return {
         ...state,
-        authenticated: () => {
-          const token = localStorage.getItem('token')
-          return (token !== null) && (token !== undefined)
-        },
+        callback: action.callback,
         signingIn: false,
       }
 
