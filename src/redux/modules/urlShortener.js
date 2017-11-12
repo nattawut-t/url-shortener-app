@@ -8,23 +8,24 @@ import 'rxjs/add/operator/takeUntil'
 import { urlShortenerUrl } from '../../configs/api'
 
 const apiPath = '/url/shorten'
+
 const SHORTEN_URL = 'SHORTEN_URL'
 const SHORTEN_URL_FULFILLED = 'SHORTEN_URL_FULFILLED'
 const SHORTEN_URL_CANCELLED = 'SHORTEN_URL_CANCELLED'
+const GET_URL = 'GET_URL'
+const GET_URL_FULFILLED = 'GET_URL_FULFILLED'
 
-export const shortenUrl = url => {
-  console.log('shortenUrl: ', url)
-  return {
-    type: SHORTEN_URL,
-    payload: url,
-  }
-}
+export const shortenUrl = url => ({
+  type: SHORTEN_URL,
+  payload: url,
+})
 export const shortenUrlFulfilled = (payload, callback) => ({
   type: SHORTEN_URL_FULFILLED,
   payload,
   callback,
 })
 export const shortenUrlCancelled = () => ({ type: SHORTEN_URL_CANCELLED })
+export const getUrl = key => ({ type: GET_URL, payload: key })
 
 // epic
 export const shortenUrlEpic = action$ => {
@@ -49,6 +50,21 @@ export const shortenUrlEpic = action$ => {
     })
 }
 
+export const getUrlEpic = action$ =>
+  action$.ofType(GET_URL)
+    .mergeMap(action =>
+      ajax({
+        url: urlShortenerUrl(`${apiPath}/${action.payload}`),
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        crossDomain: true,
+        withCredentials: false,
+      })
+        .delay(1000)
+        .map(({ response }) => shortenUrlFulfilled(response))
+        .takeUntil(action$.ofType(SHORTEN_URL_CANCELLED))
+    )
+
 const urlShortener = (state = {}, action) => {
   switch (action.type) {
     case SHORTEN_URL:
@@ -69,6 +85,12 @@ const urlShortener = (state = {}, action) => {
       return {
         ...state,
         shortening: false,
+      }
+
+    case GET_URL_FULFILLED:
+      return {
+        ...state,
+        url: action.payload.url,
       }
 
     default:
