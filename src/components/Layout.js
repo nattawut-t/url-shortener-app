@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import { Container } from 'reactstrap'
 
 import Header from './layouts/Header'
@@ -25,8 +25,7 @@ const Layout = props =>
         <Container fluid>
           <Switch>
             <Route path="/dashboard" name="Dashboard" component={Index} />
-            {/* <Route path="/loans/new" name="NewLoan" component={New} /> */}
-            <Redirect from="/" to="/dashboard" />
+            <Route path="/url" name="NewLoan" component={Index} />
           </Switch>
         </Container>
       </main>

@@ -12,12 +12,14 @@ import store from './redux/store'
 import NotFound from './components/errors/NotFound'
 import InternalServerError from './components/errors/InternalServerError'
 import Login from './containers/Login'
+import Layout from './containers/Layout'
 
 const Root = () =>
   <Provider store={store}>
     <HashRouter>
       <Switch>
         <Route exact path="/login" name="Login" component={Login} />
+        <Route exact path="/dashboard" name="Layout" component={Layout} />
         <Route exact path="/404" name="NotFound" component={NotFound} />
         <Route exact path="/500" name="InternalServerError" component={InternalServerError} />
         <Redirect from="/" to="/login" />

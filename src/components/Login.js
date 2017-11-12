@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import { withRouter } from 'react-router'
 import {
   Container,
   Row,
@@ -16,15 +16,15 @@ import { Icon } from 'react-fa'
 
 class Login extends Component {
   state = {
-    username: '',
-    password: '',
+    username: 'appsynth',
+    password: 'P@ssw0rd',
   }
 
   handleChange = (name, value) => this.setState({ [name]: value })
 
   render() {
     const { username, password } = this.state
-    const { signIn, signingIn, cancel } = this.props
+    const { signIn, signingIn, cancel, history } = this.props
 
     return (
       <div className="app flex-row align-items-center">
@@ -70,7 +70,7 @@ class Login extends Component {
                             disabled={!username || !password || signingIn}
                             onClick={() => {
                               if (signIn) {
-                                signIn(username, password)
+                                signIn(username, password, () => history.push('/dashboard'))
                               }
                             }}
                           >
@@ -113,15 +113,4 @@ class Login extends Component {
   }
 }
 
-// Login.propTypes = {
-//   // authenticated: PropTypes.bool.isRequired,
-//   signingIn: PropTypes.bool.isRequired,
-//   signIn: PropTypes.func.isRequired,
-//   // cancel: PropTypes.func.isRequired,
-// }
-
-// Login.defaultProps = {
-//   // signingIn: false,
-// }
-
-export default Login
+export default withRouter(Login)
