@@ -13,59 +13,64 @@ import {
 } from 'reactstrap'
 import { Icon } from 'react-fa'
 
-const Index = ({ longUrl, shortUrl, shorten, shortening, cancel }) =>
+const Index = ({ longUrl, shortUrl, shortenUrl, shortening, cancel }) =>
   <div className="animated fadeIn">
-    <form onSubmit={shorten}>
-      <Card>
-        <CardHeader>
-          <strong>URL Shortener</strong>
-          <small> enter a long URL to be shorten</small>
-        </CardHeader>
-        <CardBody>
-          <Row>
-            <Col xs="12">
-              <FormGroup>
-                <Label htmlFor="longUrl">Long URL</Label>
-                <Field
-                  name="longUrl"
-                  component={({ input }) =>
-                    <div>
-                      <Input
-                        {...input}
-                        type="text"
-                        id="longUrl"
-                        placeholder="Long URL"
-                      />
-                    </div>
-                  }
-                  type="text"
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <div className="form-actions" style={{ textAlign: 'right' }}>
 
-            {shortening ?
-              <Button
-                className="px-4"
-                onClick={cancel}
-              >
-                Cancel
-              </Button> : ''
-            }
-            &nbsp;&nbsp;
+    <Card>
+      <CardHeader>
+        <strong>URL Shortener</strong>
+        <small> enter a long URL to be shorten</small>
+      </CardHeader>
+      <CardBody>
+        <Row>
+          <Col xs="12">
+            <FormGroup>
+              <Label htmlFor="longUrl">Long URL</Label>
+              <Field
+                name="longUrl"
+                component={({ input }) =>
+                  <div>
+                    <Input
+                      {...input}
+                      type="text"
+                      id="longUrl"
+                      placeholder="Long URL"
+                      disabled={shortening}
+                    />
+                  </div>
+                }
+                type="text"
+              />
+            </FormGroup>
+          </Col>
+        </Row>
+        <div className="form-actions" style={{ textAlign: 'right' }}>
+
+          {shortening ?
             <Button
-              color="primary"
               className="px-4"
-              disabled={!longUrl || shortening}
+              onClick={cancel}
             >
-              <Icon spin name={shortening ? 'circle-o-notch' : ''} size="lg" />&nbsp;&nbsp;Shorten URL
-            </Button>
+              Cancel
+            </Button> : ''
+          }
+          &nbsp;&nbsp;
+          <Button
+            color="primary"
+            className="px-4"
+            onClick={() => {
+              if (shortenUrl) {
+                console.log(shortenUrl, longUrl)
+                shortenUrl(longUrl)
+              }
+            }}
+          >
+            <Icon spin name={shortening ? 'circle-o-notch' : ''} size="lg" />&nbsp;&nbsp;Shorten URL
+          </Button>
 
-          </div>
-        </CardBody>
-      </Card>
-    </form>
+        </div>
+      </CardBody>
+    </Card>
 
     <Card>
       <CardHeader>
@@ -92,5 +97,5 @@ const Index = ({ longUrl, shortUrl, shorten, shortening, cancel }) =>
   </div >
 
 export default reduxForm({
-  form: 'urlShortener',
+  form: 'urlShortenerForm',
 })(Index)
