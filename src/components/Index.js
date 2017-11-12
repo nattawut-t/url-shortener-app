@@ -58,6 +58,7 @@ const Index = ({ longUrl, shortUrl, shortenUrl, shortening, cancel }) =>
           <Button
             color="primary"
             className="px-4"
+            disabled={!longUrl || shortening}
             onClick={() => {
               if (shortenUrl) {
                 console.log(shortenUrl, longUrl)
@@ -86,7 +87,7 @@ const Index = ({ longUrl, shortUrl, shortenUrl, shortening, cancel }) =>
               type="text"
               id="shortUrl"
               placeholder="Short URL"
-              value={shortUrl}
+              value={shortUrl ? `${window.location.origin}/${shortUrl}` : ''}
               readOnly
             />
           </FormGroup>
