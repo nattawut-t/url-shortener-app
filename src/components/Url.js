@@ -8,7 +8,6 @@ class Url extends Component {
     if (key && getUrl) {
       getUrl(key)
     }
-    // window.location.href = 'https://stackoverflow.com/questions/39954010/react-redux-with-redux-observable-use-the-router-to-navigate-to-a-different-page'
   }
 
   render() {
