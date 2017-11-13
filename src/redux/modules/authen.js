@@ -33,7 +33,7 @@ export const authenticated = () => {
 
 export const signOut = () => {
   sessionStorage.clear()
-  // window.location.href = '/'
+  window.location.href = '/'
 }
 
 // epic

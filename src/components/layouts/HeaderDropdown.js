@@ -5,6 +5,7 @@ import {
   DropdownToggle,
   NavDropdown,
 } from 'reactstrap'
+import { signOut } from '../../redux/modules/authen'
 
 class HeaderDropdown extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class HeaderDropdown extends Component {
           <span className="d-md-down-none">appsynth</span>
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem><i className="fa fa-lock" /> Logout</DropdownItem>
+          <DropdownItem onClick={signOut}><i className="fa fa-lock" /> Logout</DropdownItem>
         </DropdownMenu>
       </NavDropdown>
     )
