@@ -26,16 +26,12 @@ export const shortenUrlFulfilled = (payload, callback) => ({
 })
 export const shortenUrlCancelled = () => ({ type: SHORTEN_URL_CANCELLED })
 export const getUrl = key => ({ type: GET_URL, payload: key })
+export const getUrlFulfilled = payload => ({ type: GET_URL_FULFILLED, payload })
 
-// epic
-export const shortenUrlEpic = action$ => {
-  console.log('shortenUrlEpic')
-
-  return action$.ofType(SHORTEN_URL)
-    .mergeMap(action => {
-      console.log('shortenUrlEpic', action.type)
-
-      return ajax({
+export const shortenUrlEpic = action$ =>
+  action$.ofType(SHORTEN_URL)
+    .mergeMap(action =>
+      ajax({
         url: urlShortenerUrl(apiPath),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -46,9 +42,7 @@ export const shortenUrlEpic = action$ => {
         .delay(1000)
         .map(({ response }) => shortenUrlFulfilled(response))
         .takeUntil(action$.ofType(SHORTEN_URL_CANCELLED))
-      // .startWith(loading(true))
-    })
-}
+    )
 
 export const getUrlEpic = action$ =>
   action$.ofType(GET_URL)
@@ -60,9 +54,7 @@ export const getUrlEpic = action$ =>
         crossDomain: true,
         withCredentials: false,
       })
-        .delay(1000)
-        .map(({ response }) => shortenUrlFulfilled(response))
-        .takeUntil(action$.ofType(SHORTEN_URL_CANCELLED))
+        .map(({ response }) => getUrlFulfilled(response))
     )
 
 const urlShortener = (state = {}, action) => {

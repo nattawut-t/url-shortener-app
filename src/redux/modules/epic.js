@@ -1,8 +1,9 @@
 import { combineEpics } from 'redux-observable'
 import { signInEpic } from './authen'
-import { shortenUrlEpic } from './urlShortener'
+import { shortenUrlEpic, getUrlEpic } from './urlShortener'
 
 export default combineEpics(
   signInEpic,
   shortenUrlEpic,
+  getUrlEpic,
 )
