@@ -13,6 +13,7 @@ yarn add \
     bootstrap@4.0.0-beta \
     reactstrap@next \
     react-fa \
+    react-s-alert \
     webpack \
     is-url-external \
     classnames \
