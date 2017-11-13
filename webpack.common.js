@@ -47,7 +47,6 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: resolve(__dirname + '/index.html'),
-      title: 'KK Admin'
     })
   ],
   output: {
