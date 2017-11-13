@@ -8,12 +8,8 @@ import Breadcrumb from './layouts/Breadcrumb'
 // import Aside from '../components/Aside/'
 // import Footer from '../components/Footer/'
 
-// Icons
-// import FontAwesome from '../views/Icons/FontAwesome/'
-// import SimpleLineIcons from '../views/Icons/SimpleLineIcons/'
 import Index from '../containers/Index'
-// import Search from '../containers/loans/Search'
-// import New from '../containers/loans/New'
+// import { authenticated, signOut } from '../redux/modules/authen'
 
 const Layout = props =>
   <div className="app">
