@@ -13,6 +13,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap'
 import { Icon } from 'react-fa'
+import alertMessage from '../shareds/alertMessage'
 
 class Login extends Component {
   state = {
@@ -64,7 +65,10 @@ class Login extends Component {
                           disabled={!username || !password || signingIn}
                           onClick={() => {
                             if (signIn) {
-                              signIn(username, password, () => history.push('/dashboard'))
+                              signIn(username, password, () => {
+                                alertMessage('Sign in sucessfully completed', 'info')
+                                history.push('/dashboard')
+                              })
                             }
                           }}
                         >
