@@ -26,15 +26,17 @@ export const signInFulfilled = (data, callback) => ({ type: SIGN_IN_FULFILLED, d
 export const signInCancelled = () => ({ type: SIGN_IN_CANCELLED })
 
 export const authenticated = () => {
-  const token = sessionStorage.getItem('token')
-  console.log('authenticated: ', token)
-  return token !== undefined && token !== null
+  const _token = token()
+  console.log('authenticated: ', _token)
+  return _token !== undefined && _token !== null
 }
 
 export const signOut = () => {
   sessionStorage.clear()
   window.location.href = '/'
 }
+
+export const token = () => sessionStorage.getItem('token')
 
 // epic
 // export const signInEpic = () =>

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/takeUntil'
 
 import { urlShortenerUrl } from '../../configs/api'
+import { token } from './authen'
 
 const apiPath = '/url/shorten'
 
@@ -34,7 +35,10 @@ export const shortenUrlEpic = action$ =>
       ajax({
         url: urlShortenerUrl(apiPath),
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token(),
+        },
         body: { url: action.payload },
         crossDomain: true,
         withCredentials: false,
@@ -50,7 +54,10 @@ export const getUrlEpic = action$ =>
       ajax({
         url: urlShortenerUrl(`${apiPath}/${action.payload}`),
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token(),
+        },
         crossDomain: true,
         withCredentials: false,
       })
