@@ -5,8 +5,8 @@ import { Container } from 'reactstrap'
 import Header from './layouts/Header'
 import Sidebar from './layouts/Sidebar'
 import Breadcrumb from './layouts/Breadcrumb'
-// import Aside from '../components/Aside/'
-// import Footer from '../components/Footer/'
+// import Aside from '../layouts/Aside/'
+import Footer from './layouts/Footer'
 
 import Index from '../containers/Index'
 import { authenticated, signOut } from '../redux/modules/authen'
@@ -43,7 +43,7 @@ class Layout extends Component {
           </main>
           {/* <Aside /> */}
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     )
   }

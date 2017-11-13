@@ -27,7 +27,6 @@ export const signInCancelled = () => ({ type: SIGN_IN_CANCELLED })
 
 export const authenticated = () => {
   const _token = token()
-  console.log('authenticated: ', _token)
   return _token !== undefined && _token !== null
 }
 

@@ -14,7 +14,7 @@ export default {
     },
     {
       name: 'URL Shortener',
-      url: '/url',
+      url: '/dashboard',
       icon: 'icon-puzzle',
     },
   ],
