@@ -14,6 +14,25 @@ import {
 import { Icon } from 'react-fa'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
+const required = value => (value ? undefined : 'Required')
+const renderField = ({
+  input,
+  label,
+  type,
+  meta: { touched, error, warning },
+}) =>
+  <div>
+    <Input
+      {...input}
+      type={type}
+      placeholder={label}
+      required
+    />
+    {touched &&
+      ((error && <span>{error}</span>) ||
+        (warning && <span>{warning}</span>))}
+  </div>
+
 class Index extends Component {
   state = { copied: false }
 
@@ -35,17 +54,9 @@ class Index extends Component {
                   <Label htmlFor="longUrl">Long URL</Label>
                   <Field
                     name="longUrl"
-                    component={({ input }) =>
-                      <div>
-                        <Input
-                          {...input}
-                          type="text"
-                          id="longUrl"
-                          placeholder="Long URL"
-                          disabled={shortening}
-                        />
-                      </div>
-                    }
+                    component={renderField}
+                    validate={[required]}
+                    label="Long URL"
                     type="text"
                   />
                 </FormGroup>
@@ -63,6 +74,7 @@ class Index extends Component {
               }
               &nbsp;&nbsp;
               <Button
+                name="submit"
                 color="primary"
                 className="px-4"
                 disabled={!longUrl || shortening}
@@ -105,6 +117,7 @@ class Index extends Component {
                 onCopy={() => this.setState({ copied: true })}
               >
                 <Button
+                  name="copy"
                   color="primary"
                   className="px-4"
                   disabled={!shortUrl}

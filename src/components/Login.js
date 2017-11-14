@@ -60,6 +60,7 @@ class Login extends Component {
                     <Row>
                       <Col xs="12">
                         <Button
+                          name="login"
                           color="primary"
                           className="px-4"
                           disabled={!username || !password || signingIn}
