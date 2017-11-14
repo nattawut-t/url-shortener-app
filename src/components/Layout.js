@@ -37,7 +37,7 @@ class Layout extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Index} />
-                <Route path="/url" name="Shorten" component={Index} />
+                {/* <Route path="/url" name="Shorten" component={Index} /> */}
               </Switch>
             </Container>
           </main>

@@ -14,6 +14,7 @@ import {
 import { Icon } from 'react-fa'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
+const url = path => `${window.location.origin}/#/${path}`
 const required = value => (value ? undefined : 'Required')
 const renderField = ({
   input,
@@ -105,7 +106,7 @@ class Index extends Component {
                     type="text"
                     id="shortUrl"
                     placeholder="Short URL"
-                    value={shortUrl ? `${window.location.origin}/#/${shortUrl}` : ''}
+                    value={shortUrl ? url(shortUrl) : ''}
                     readOnly
                   />
                 </FormGroup>
@@ -113,7 +114,7 @@ class Index extends Component {
             </Row>
             <div className="form-actions" style={{ textAlign: 'right' }}>
               <CopyToClipboard
-                text={shortUrl ? `${window.location.origin}/#/${shortUrl}` : ''}
+                text={shortUrl ? url(shortUrl) : ''}
                 onCopy={() => this.setState({ copied: true })}
               >
                 <Button
@@ -125,6 +126,18 @@ class Index extends Component {
                   Copy to Clipboard
                 </Button>
               </CopyToClipboard>
+              &nbsp;&nbsp;
+              <Button
+                name="test"
+                color="primary"
+                className="px-4"
+                disabled={!shortUrl}
+                onClick={() => {
+                  window.open(url(shortUrl))
+                }}
+              >
+                Test
+              </Button>
             </div>
           </CardBody>
         </Card>
