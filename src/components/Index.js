@@ -133,7 +133,7 @@ class Index extends Component {
                 className="px-4"
                 disabled={!shortUrl}
                 onClick={() => {
-                  window.open(url(shortUrl))
+                  window.open(url(shortUrl), '_blank')
                 }}
               >
                 Test
