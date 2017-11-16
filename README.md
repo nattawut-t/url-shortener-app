@@ -1,6 +1,6 @@
 # URL Shortener APP
 
-The Web Application for using in URL Shortener demonstration to Appsynth Co.,Ltd.
+The Web Application for using in URL Shortener demonstration.
 
 This project is comprised of technology listed below.
 
@@ -55,7 +55,3 @@ or
 ```s
 yarn start
 ```
-
-## Notes
-
-This project is used for demonstration only. It need to be enhanced for a real-world application.
