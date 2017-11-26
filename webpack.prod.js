@@ -11,6 +11,8 @@ module.exports = merge(common, {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.AUTHEN_URL': JSON.stringify('http://authen-api/api'),
+      'process.env.URL_SHORTENER_URL': JSON.stringify('http://url-shortener-api/api'),
     }),
   ],
 })
