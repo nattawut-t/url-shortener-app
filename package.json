@@ -6,7 +6,9 @@
   "author": "Nattawut Tammaratmetee <1203ball@gmail.com>",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --hot --open --config webpack.dev.js",
-    "build": "node_modules/.bin/webpack --config webpack.prod.js",
+    "build": "node_modules/.bin/webpack -p --config webpack.prod.js",
+    "serve": "node_modules/.bin/http-server ./dist/",
+    "prod": "node_modules/.bin/webpack -p --config webpack.prod.js && cp img/favicon.png dist/ && node_modules/.bin/http-server ./dist/",
     "lint": "node_modules/.bin/eslint src"
   },
   "dependencies": {
@@ -51,6 +53,7 @@
     "eslint-plugin-react": "^7.4.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
+    "http-server": "^0.10.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",

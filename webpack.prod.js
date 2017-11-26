@@ -10,10 +10,7 @@ module.exports = merge(common, {
       sourceMap: true,
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('prod'),
-        'ADMIN_URL': JSON.stringify('https://api.moneytable.com'),
-      },
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   ],
 })
