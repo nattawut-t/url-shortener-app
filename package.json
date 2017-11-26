@@ -8,7 +8,7 @@
     "start": "node_modules/.bin/webpack-dev-server --hot --open --config webpack.dev.js",
     "build": "node_modules/.bin/webpack -p --config webpack.prod.js",
     "serve": "node_modules/.bin/http-server ./dist/",
-    "prod": "node_modules/.bin/webpack -p --config webpack.prod.js && cp img/favicon.png dist/ && node_modules/.bin/http-server ./dist/",
+    "prod": "node_modules/.bin/webpack -p --config webpack.prod.js && cp img/favicon.png dist/ && cp -r img/ dist/img/ && node_modules/.bin/http-server ./dist/",
     "lint": "node_modules/.bin/eslint src"
   },
   "dependencies": {

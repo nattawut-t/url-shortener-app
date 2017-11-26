@@ -10,9 +10,11 @@ module.exports = merge(common, {
       sourceMap: true,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.AUTHEN_URL': JSON.stringify('http://authen-api/api'),
-      'process.env.URL_SHORTENER_URL': JSON.stringify('http://url-shortener-api/api'),
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+        'AUTHEN_URL': JSON.stringify('http://35.198.215.103:3000/api'),
+        'URL_SHORTENER_URL': JSON.stringify('http://url-shortener-api/api'),
+      },
     }),
   ],
 })
