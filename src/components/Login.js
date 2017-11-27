@@ -13,7 +13,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap'
 import { Icon } from 'react-fa'
-import alertMessage from '../shareds/alertMessage'
+import alertMessage from '../shares/alertMessage'
 
 class Login extends Component {
   state = {
