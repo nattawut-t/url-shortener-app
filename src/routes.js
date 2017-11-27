@@ -1,7 +1,8 @@
 const routes = {
   '/': 'Home',
   '/dashboard': 'Dashboard',
-  '/url': 'URL Shortener',
+  '/url/recover/': 'URL Shortener',
+  '/email': 'Email',
 }
 
 export default routes

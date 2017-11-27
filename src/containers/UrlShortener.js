@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Component from '../components/Index'
+import Component from '../components/UrlShortener'
 import { shortenUrl, shortenUrlCancelled } from '../redux/modules/urlShortener'
 
 const mapStateToProps = ({ form: { urlShortenerForm }, urlShortener }) => ({

@@ -14,7 +14,12 @@ export default {
     },
     {
       name: 'URL Shortener',
-      url: '/dashboard',
+      url: '/url/shortener',
+      icon: 'icon-puzzle',
+    },
+    {
+      name: 'Email',
+      url: '/email',
       icon: 'icon-puzzle',
     },
   ],

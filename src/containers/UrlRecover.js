@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Component from '../components/Url'
+import Component from '../components/UrlRecover'
 import { getUrl } from '../redux/modules/urlShortener'
 
 const mapStateToProps = ({ urlShortener }) => ({

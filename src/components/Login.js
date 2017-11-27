@@ -68,7 +68,7 @@ class Login extends Component {
                             if (signIn) {
                               signIn(username, password, () => {
                                 alertMessage('Sign in sucessfully completed', 'info')
-                                history.push('/dashboard')
+                                history.push('/url/shortener')
                               })
                             }
                           }}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+// import { Switch, Route } from 'react-router-dom'
 import { Container } from 'reactstrap'
 
 import Header from './layouts/Header'
@@ -8,7 +8,6 @@ import Breadcrumb from './layouts/Breadcrumb'
 // import Aside from '../layouts/Aside/'
 import Footer from './layouts/Footer'
 
-import Index from '../containers/Index'
 import { authenticated, signOut } from '../redux/modules/authen'
 
 class Layout extends Component {
@@ -21,7 +20,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { signingIn } = this.props
+    const { signingIn, children } = this.props
 
     if (signingIn || !authenticated()) {
       return ''
@@ -35,10 +34,7 @@ class Layout extends Component {
           <main className="main">
             <Breadcrumb />
             <Container fluid>
-              <Switch>
-                <Route path="/dashboard" name="Dashboard" component={Index} />
-                {/* <Route path="/url" name="Shorten" component={Index} /> */}
-              </Switch>
+              {children}
             </Container>
           </main>
           {/* <Aside /> */}
