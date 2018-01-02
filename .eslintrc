@@ -1,45 +1,45 @@
 {
-    "parser": "babel-eslint",
-    "extends": "airbnb",
-    "rules": {
-        "semi": [
-            "error",
-            "never"
-        ],
-        "function-paren-newline": 0,
-        "no-underscore-dangle": 0,
-        "comma-dangle": [
-            "error",
-            "always-multiline"
-        ],
-        "object-curly-newline": 0,
-        "react/jsx-wrap-multilines": 0,
-        "react/jsx-filename-extension": 0,
-        "react/prop-types": 0,
-        "jsx-a11y/label-has-for": 0,
-        "arrow-parens": [
-            "error",
-            "as-needed"
-        ],
-        "spaced-comment": 0,
-        "no-confusing-arrow": 0,
-        "import/prefer-default-export": 0,
-        "class-methods-use-this": 0,
-        "jsx-a11y/anchor-is-valid": 0,
-        "no-nested-ternary": 0,
-        "no-use-before-define": 0,
-        "react/jsx-no-bind": 0,
-        "no-plusplus": 0,
-        "no-param-reassign": 0,
-        "react/forbid-prop-types": 0,
-        "react/no-unused-state": 0
-    },
-    "globals": {
-        "window": true,
-        "document": true,
-        "$": true,
-        "localStorage": true,
-        "sessionStorage": true,
-        "FormData": true
-    }
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "semi": [
+      "error",
+      "never"
+    ],
+    "function-paren-newline": 0,
+    "no-underscore-dangle": 0,
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "object-curly-newline": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "jsx-a11y/label-has-for": 0,
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "spaced-comment": 0,
+    "no-confusing-arrow": 0,
+    "import/prefer-default-export": 0,
+    "class-methods-use-this": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-nested-ternary": 0,
+    "no-use-before-define": 0,
+    "react/jsx-no-bind": 0,
+    "no-plusplus": 0,
+    "no-param-reassign": 0,
+    "react/forbid-prop-types": 0,
+    "react/no-unused-state": 0
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "$": true,
+    "localStorage": true,
+    "sessionStorage": true,
+    "FormData": true
+  }
 }
